@@ -1,9 +1,9 @@
-## find_corrupt_jpegs.sh
+# find_corrupt_jpegs.sh
 
 Finds JPEG files that lack an End-Of-Image marker and are thus corrupt (for example due to a partial/failed download).  
 Such files often pass validation checks of other tools because they start with a valid file header.
 
-### Installation
+## Installation
 
 ```bash
 wget "https://raw.githubusercontent.com/reformat0r/find_corrupt_jpegs/master/find_corrupt_jpegs.sh" && chmod +x find_corrupt_jpegs.sh
@@ -11,20 +11,20 @@ wget "https://raw.githubusercontent.com/reformat0r/find_corrupt_jpegs/master/fin
 
 
 
-### Usage
+## Usage
 
 ```bash
 ./find_corrupt_jpegs.sh outfile.txt my_photo_dir another_dir photos_*_2020
 ```
 
 
-### Example output
+## Example output
 
 ```
  ▇▇▇▇▇▇▇▇▇▇▇      |  70% - 1 broken
 ```
 
-### Output file
+## Output file
 
 ```bash
 $ cat outfile.txt
@@ -42,7 +42,7 @@ photos_03_2020/all_is_vibration.jpg
 
 
 
-### Example JPEG, truncated
+## Example JPEG, truncated
 
 <img src="example_truncated.jpg" width="400">
 
