@@ -46,16 +46,16 @@ BAR_BLOCKS=$((BAR_BLOCKS-total_digits)) # leave space for pbroken()
 
 for file in "${files[@]}"
 do
-        tailbytes=`tail -c2 "$file" | xxd -ps`
-        if  [[ -z $tailbytes || $tailbytes  != 'ffd9' ]]; then # Expect EOI
-            echo "$file" >> "$out_file"
-            broken=$((broken+1))
-        fi
-
-        processed=$((processed+1))
-        processed_percentage=$(((processed*100/total*100)/100))
-        blocks_done=$((BAR_BLOCKS*processed_percentage/100))
-
-        clear_line; pblocks_done; pblocks_remaining; ppercentage; pbroken
+    tailbytes=`tail -c2 "$file" | xxd -ps`
+    if  [[ -z $tailbytes || $tailbytes  != 'ffd9' ]]; then # Expect EOI of \xffd9
+        echo "$file" >> "$out_file"
+        broken=$((broken+1))
+    fi
+    
+    processed=$((processed+1))
+    processed_percentage=$(((processed*100/total*100)/100))
+    blocks_done=$((BAR_BLOCKS*processed_percentage/100))
+    
+    clear_line; pblocks_done; pblocks_remaining; ppercentage; pbroken
 done
 printf "\n";
